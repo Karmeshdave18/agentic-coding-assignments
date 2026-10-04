@@ -55,6 +55,11 @@ def test_validation_requires_title():
         validate_new_task("", "medium")
 
 
+def test_validation_rejects_spaces_only_title():
+    with pytest.raises(ValidationError):
+        validate_new_task("   ", "medium")
+
+
 def test_validation_rejects_bad_priority():
     with pytest.raises(ValidationError):
         validate_new_task("ok", "urgent")
